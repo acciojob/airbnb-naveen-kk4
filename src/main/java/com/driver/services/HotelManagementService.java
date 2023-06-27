@@ -17,8 +17,8 @@ import java.util.Objects;
 
 public class HotelManagementService {
     HotelManagementRepository repository = new HotelManagementRepository();
-    @Autowired
-    BookingRepositiry bookingRepositiry;
+   /* @Autowired
+    BookingRepositiry bookingRepositiry;*/
 
     public String addHotel(Hotel hotel) {
         if(Objects.isNull(hotel))return "FAILURE";
@@ -69,7 +69,7 @@ public class HotelManagementService {
 
     public int bookARoom(Booking booking) {
 
-        bookingRepositiry.save(booking);
+        //bookingRepositiry.save(booking);
         String hotelName = booking.getHotelName();
         int bookRooms = booking.getNoOfRooms();
         Hotel hotel = repository.findByHotelName(hotelName);

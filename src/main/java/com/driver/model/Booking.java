@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeId;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+
 
 
 
