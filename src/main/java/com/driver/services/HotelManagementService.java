@@ -67,7 +67,7 @@ public class HotelManagementService {
 
     public int bookARoom(Booking booking) {
 
-        //bookingRepositiry.save(booking);
+
         String hotelName = booking.getHotelName();
         int bookRooms = booking.getNoOfRooms();
         Hotel hotel = repository.findByHotelName(hotelName);
@@ -75,28 +75,29 @@ public class HotelManagementService {
         int price = bookRooms*hotel.getPricePerNight();
         hotel.setAvailableRooms(hotel.getAvailableRooms()-bookRooms);
        List<User> users = repository.findAllUsers();
-       User bookedUser = null;
+
        for(User user : users){
            if(user.getaadharCardNo()==booking.getBookingAadharCard()){
-               bookedUser=user;
+               repository.incrementBooking(user,1);
                break;
+
            }
        }
-       if(!Objects.isNull(bookedUser)) repository.incrementBooking(bookedUser,bookRooms);
+
         return price;
 
     }
 
     public int getBookings(Integer aadharCard) {
         List<User> users = repository.findAllUsers();
-        User bookedUser = null;
+
         for(User user : users){
             if(user.getaadharCardNo()==aadharCard){
-                bookedUser=user;
-                break;
+                return repository.getBookings(user);
+
             }
         }
-        if(!Objects.isNull(bookedUser)) return repository.getBookings(bookedUser);
+
         return 0;
     }
 }
