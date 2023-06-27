@@ -71,6 +71,10 @@ public class HotelManagementService {
         String hotelName = booking.getHotelName();
         int bookRooms = booking.getNoOfRooms();
         Hotel hotel = repository.findByHotelName(hotelName);
+
+        if(bookRooms> hotel.getAvailableRooms())return -1;
+        int price = bookRooms*hotel.getPricePerNight();
+        hotel.setAvailableRooms(hotel.getAvailableRooms()-bookRooms);
         List<User> users = repository.findAllUsers();
         for(User user : users){
             if(user.getaadharCardNo()==booking.getBookingAadharCard()){
@@ -79,9 +83,6 @@ public class HotelManagementService {
 
             }
         }
-        if(bookRooms> hotel.getAvailableRooms())return -1;
-        int price = bookRooms*hotel.getPricePerNight();
-        hotel.setAvailableRooms(hotel.getAvailableRooms()-bookRooms);
 
         return price;
 
@@ -97,6 +98,6 @@ public class HotelManagementService {
             }
         }
 
-        return 0;
+        return -1;
     }
 }
