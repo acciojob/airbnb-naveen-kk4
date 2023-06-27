@@ -1,8 +1,8 @@
 package com.driver.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
 
-import javax.persistence.*;
+
+
 
 
 
@@ -10,8 +10,7 @@ import javax.persistence.*;
 
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private String bookingId; //This will be a random UUID generated String
 
     private int bookingAadharCard;
