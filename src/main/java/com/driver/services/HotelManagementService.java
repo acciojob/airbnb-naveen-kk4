@@ -82,7 +82,7 @@ public class HotelManagementService {
                break;
            }
        }
-       if(!Objects.isNull(bookedUser)) repository.incrementBooking(bookedUser);
+       if(!Objects.isNull(bookedUser)) repository.incrementBooking(bookedUser,bookRooms);
         return price;
 
     }

@@ -38,9 +38,9 @@ public class HotelManagementRepository {
     public List<User> findAllUsers() {
         return new ArrayList<>(userMap.keySet());
     }
-    public void incrementBooking(User user){
+    public void incrementBooking(User user,int num){
         int val = userMap.get(user);
-        userMap.put(user,val+1);
+        userMap.put(user,val+num);
     }
 
     public int getBookings(User bookedUser) {
