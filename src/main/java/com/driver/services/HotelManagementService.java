@@ -92,7 +92,8 @@ public class HotelManagementService {
         List<User> users = repository.findAllUsers();
 
         for(User user : users){
-            if(user.getaadharCardNo()==aadharCard){
+            Integer adharNum = user.getaadharCardNo();
+            if(adharNum==aadharCard){
                 return repository.getBookings(user);
 
             }
