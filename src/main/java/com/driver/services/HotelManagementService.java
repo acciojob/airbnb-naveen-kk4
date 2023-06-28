@@ -89,16 +89,6 @@ public class HotelManagementService {
     }
 
     public int getBookings(Integer aadharCard) {
-        List<User> users = repository.findAllUsers();
-
-        for(User user : users){
-            Integer adharNum = user.getaadharCardNo();
-            if(adharNum==aadharCard){
-                return repository.getBookings(user);
-
-            }
-        }
-
-        return -1;
+        return repository.getBookings2(aadharCard);
     }
 }

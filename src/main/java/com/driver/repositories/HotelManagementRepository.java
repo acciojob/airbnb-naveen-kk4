@@ -46,4 +46,11 @@ public class HotelManagementRepository {
     public int getBookings(User bookedUser) {
         return userMap.get(bookedUser);
     }
+
+    public int getBookings2(Integer aadharCard) {
+        for(User user : userMap.keySet()){
+            if(user.getaadharCardNo()==aadharCard)return userMap.get(user);
+        }
+        return -1;
+    }
 }
